@@ -32,4 +32,7 @@
     <string name="tv_camera">camera</string>
     <string name="tv_edit_profile">Edit Profile</string>
     <string name="tv_logout">Logout</string>
+    <string name="login_debug">Login Versi Debug</string>
+    <string name="login_demo">Login Demo</string>
+    <string name="login_pro">Login Pro</string>
 </resources>
