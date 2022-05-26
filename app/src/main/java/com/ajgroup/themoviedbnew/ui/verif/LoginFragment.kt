@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.ajgroup.themoviedbnew.R
+import com.ajgroup.themoviedbnew.data.local.UserDataStoreManager
 import com.ajgroup.themoviedbnew.data.local.UserDatabase
 import com.ajgroup.themoviedbnew.databinding.FragmentLoginBinding
 import com.ajgroup.themoviedbnew.repository.VerifRepository
@@ -23,7 +24,9 @@ class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
     private val verifViewModel by viewModels<VerifViewModel>{
-        VerifViewModelFactory(VerifRepository(UserDatabase.getInstance(requireContext())!!.userDao()))
+        VerifViewModelFactory(VerifRepository(UserDatabase.getInstance(requireContext())!!.userDao(),
+        UserDataStoreManager(requireContext())
+            ))
     }
 
 
@@ -53,7 +56,8 @@ class LoginFragment : Fragment() {
                             Toast.makeText(context, getString(R.string.email_pass_wrong), Toast.LENGTH_SHORT).show()
                         } else {
                             lifecycleScope.launch(Dispatchers.IO){
-
+                                verifViewModel.setEmailPreference(email)
+                                verifViewModel.setNamaPreference(isLogin.name)
                                 runBlocking(Dispatchers.Main){
                                     val action = LoginFragmentDirections
                                         .actionLoginFragmentToHomeFragment()

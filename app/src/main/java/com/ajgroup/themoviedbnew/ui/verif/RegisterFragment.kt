@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ajgroup.themoviedbnew.R
+import com.ajgroup.themoviedbnew.data.local.UserDataStoreManager
 import com.ajgroup.themoviedbnew.data.local.UserDatabase
 import com.ajgroup.themoviedbnew.data.local.model.User
 import com.ajgroup.themoviedbnew.databinding.FragmentRegisterBinding
@@ -23,7 +24,9 @@ class RegisterFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val verifViewModel by viewModels<VerifViewModel>{
-        VerifViewModelFactory(VerifRepository(UserDatabase.getInstance(requireContext())!!.userDao()))
+        VerifViewModelFactory(VerifRepository(UserDatabase.getInstance(requireContext())!!.userDao(),
+        UserDataStoreManager(requireContext())
+        ))
     }
 
 

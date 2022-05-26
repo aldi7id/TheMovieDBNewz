@@ -25,4 +25,11 @@
     <string name="rating">Rating</string>
     <string name="overview">overview</string>
     <string name="your_favorite">Your Favorite</string>
+    <string name="tv_name">Name</string>
+    <string name="tv_password">Password</string>
+    <string name="tv_update">Update</string>
+    <string name="tv_gallery">gallery</string>
+    <string name="tv_camera">camera</string>
+    <string name="tv_edit_profile">Edit Profile</string>
+    <string name="tv_logout">Logout</string>
 </resources>

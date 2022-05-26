@@ -24,7 +24,7 @@ class FavoriteAdapter(private val onClick:(Favorite)->Unit)
                 }
                 tvTitle.text = currentFavorite.title
                 tvRating.text = currentFavorite.voteAverage.toString()
-                tvOverview.text = currentFavorite.overview
+                tvRelease.text = currentFavorite.releaseDate
             }
         }
 

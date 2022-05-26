@@ -91,7 +91,7 @@ class DetailMovieFragment : Fragment() {
                                 if(isFavorite == null ){
                                     val newFavorite = Favorite(
                                         id = it.data?.id,
-                                        overview = it.data?.overview?:"",
+                                        releaseDate = it.data?.releaseDate?:"",
                                         posterPath = it.data?.posterPath,
                                         title = it.data?.title?:"",
                                         voteAverage = it.data?.voteAverage?:0.0

@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.ajgroup.themoviedbnew.R
 import com.ajgroup.themoviedbnew.data.api.model.Result
 import com.ajgroup.themoviedbnew.data.api.ApiClient
+import com.ajgroup.themoviedbnew.data.local.UserDataStoreManager
 import com.ajgroup.themoviedbnew.databinding.FragmentHomeBinding
 import com.ajgroup.themoviedbnew.repository.HomeRepository
 import com.ajgroup.themoviedbnew.ui.adapter.HomeAdapter
@@ -22,7 +23,8 @@ class HomeFragment : Fragment() {
     private val homeViewModel by viewModels<HomeViewModel> {
         HomeViewModelFactory(
             HomeRepository(
-                ApiClient.instance))
+                ApiClient.instance, UserDataStoreManager(requireContext())
+            ))
     }
 
     override fun onCreateView(
@@ -42,6 +44,11 @@ class HomeFragment : Fragment() {
         }
         binding.ivProfile.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }
+        homeViewModel.namaPreference.observe(viewLifecycleOwner){
+            if (it!=""){
+                binding.welcome.text = "Welcome,\n$it!"
+            }
         }
 
         homeViewModel.discoveryMovies.observe(viewLifecycleOwner){

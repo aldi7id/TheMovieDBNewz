@@ -45,4 +45,5 @@ class HomeViewModel(private val repository: HomeRepository): ViewModel() {
 
         })
     }
+    val namaPreference = repository.getNama()
 }

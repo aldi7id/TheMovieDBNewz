@@ -24,4 +24,23 @@ class VerifViewModel(
     fun login(email: String, password: String) = repository.login(email,password)
     fun register(user: User) = repository.register(user)
     fun checkEmail(email: String) = repository.checkEmail(email)
+
+    //login preference
+    fun setEmailPreference(email: String){
+        viewModelScope.launch {
+            repository.setEmail(email)
+        }
+    }
+
+    fun setNamaPreference(nama: String){
+        viewModelScope.launch {
+            repository.setNama(nama)
+        }
+    }
+
+    fun deletePref() = viewModelScope.launch {
+        repository.deletePref()
+    }
+
+    val emailPreference = repository.getEmail()
 }
