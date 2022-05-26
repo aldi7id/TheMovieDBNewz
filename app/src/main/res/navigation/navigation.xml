@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/openerFragment"
-        android:name="com.ajgroup.themoviedbnew.OpenerFragment"
+        android:name="com.ajgroup.themoviedbnew.ui.opener.OpenerFragment"
         android:label="fragment_opener"
         tools:layout="@layout/fragment_opener" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.ajgroup.themoviedbnew.LoginFragment"
+        android:name="com.ajgroup.themoviedbnew.ui.verif.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ajgroup.themoviedbnew.HomeFragment"
+        android:name="com.ajgroup.themoviedbnew.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -49,12 +49,12 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.ajgroup.themoviedbnew.RegisterFragment"
+        android:name="com.ajgroup.themoviedbnew.ui.verif.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.ajgroup.themoviedbnew.ProfileFragment"
+        android:name="com.ajgroup.themoviedbnew.ui.verif.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -63,12 +63,12 @@
     </fragment>
     <fragment
         android:id="@+id/detailMovieFragment"
-        android:name="com.ajgroup.themoviedbnew.DetailMovieFragment"
+        android:name="com.ajgroup.themoviedbnew.ui.detail.DetailMovieFragment"
         android:label="fragment_detail_movie"
         tools:layout="@layout/fragment_detail_movie" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.ajgroup.themoviedbnew.FavoriteFragment"
+        android:name="com.ajgroup.themoviedbnew.ui.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" >
         <action
