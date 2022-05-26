@@ -65,7 +65,12 @@
         android:id="@+id/detailMovieFragment"
         android:name="com.ajgroup.themoviedbnew.ui.detail.DetailMovieFragment"
         android:label="fragment_detail_movie"
-        tools:layout="@layout/fragment_detail_movie" />
+        tools:layout="@layout/fragment_detail_movie" >
+        <argument
+            android:name="movie_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.ajgroup.themoviedbnew.ui.favorite.FavoriteFragment"

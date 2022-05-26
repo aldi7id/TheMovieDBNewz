@@ -10,4 +10,19 @@
     <string name="register_failed">Register Failed</string>
     <string name="register_success">Register Success</string>
     <string name="email_registered">Email Already Registered</string>
+    <string name="email_pass_wrong">Email and Password Wrong</string>
+    <string name="tv_welcome">Welcome:</string>
+    <string name="tv_discovery">Discovery</string>
+    <string name="tv_tittle">Tittle</string>
+    <string name="tv_genres">Genres</string>
+    <string name="tv_release_date">Release Date:</string>
+    <string name="tv_status">Status:</string>
+    <string name="tv_taglines">Taglines:</string>
+    <string name="tv_desc">Description</string>
+    <string name="loading">Loading Movies...</string>
+    <string name="loaded">Movies Detail Loaded</string>
+    <string name="error">Error</string>
+    <string name="rating">Rating</string>
+    <string name="overview">overview</string>
+    <string name="your_favorite">Your Favorite</string>
 </resources>
