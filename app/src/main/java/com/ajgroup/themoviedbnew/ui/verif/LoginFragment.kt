@@ -18,16 +18,18 @@ import com.ajgroup.themoviedbnew.ui.verif.LoginFragmentDirections
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private val verifViewModel by viewModels<VerifViewModel>{
-        VerifViewModelFactory(VerifRepository(UserDatabase.getInstance(requireContext())!!.userDao(),
-        UserDataStoreManager(requireContext())
-            ))
-    }
+//    private val verifViewModel by viewModels<VerifViewModel>{
+//        VerifViewModelFactory(VerifRepository(UserDatabase.getInstance(requireContext())!!.userDao(),
+//        UserDataStoreManager(requireContext())
+//            ))
+//    }
+    private val verifViewModel: VerifViewModel by viewModel()
+
 
 
     override fun onCreateView(

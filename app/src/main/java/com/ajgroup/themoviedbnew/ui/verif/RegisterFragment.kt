@@ -17,17 +17,20 @@ import com.ajgroup.themoviedbnew.databinding.FragmentRegisterBinding
 import com.ajgroup.themoviedbnew.repository.VerifRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
-    private val verifViewModel by viewModels<VerifViewModel>{
-        VerifViewModelFactory(VerifRepository(UserDatabase.getInstance(requireContext())!!.userDao(),
-        UserDataStoreManager(requireContext())
-        ))
-    }
+//    private val verifViewModel by viewModels<VerifViewModel>{
+//        VerifViewModelFactory(VerifRepository(UserDatabase.getInstance(requireContext())!!.userDao(),
+//        UserDataStoreManager(requireContext())
+//        ))
+//    }
+    private val verifViewModel: VerifViewModel by viewModel()
+
 
 
     override fun onCreateView(

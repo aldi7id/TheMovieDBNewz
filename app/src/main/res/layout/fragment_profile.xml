@@ -107,7 +107,7 @@
         app:layout_constraintTop_toTopOf="@+id/btn_gallery" />
 
     <TextView
-        android:id="@+id/id_edit_profile"
+        android:id="@+id/tv_edit_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -137,7 +137,7 @@
         android:layout_height="80dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/id_edit_profile"
+        app:layout_constraintBottom_toTopOf="@+id/tv_edit_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -152,6 +152,6 @@
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_edit_profile"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edit_profile"
         app:srcCompat="@drawable/ic_launcher_background" />
 </androidx.constraintlayout.widget.ConstraintLayout>

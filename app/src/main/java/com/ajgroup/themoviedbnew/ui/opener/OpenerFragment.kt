@@ -15,21 +15,23 @@ import com.ajgroup.themoviedbnew.databinding.FragmentOpenerBinding
 import com.ajgroup.themoviedbnew.repository.VerifRepository
 import com.ajgroup.themoviedbnew.ui.verif.VerifViewModel
 import com.ajgroup.themoviedbnew.ui.verif.VerifViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class OpenerFragment : Fragment() {
     private var _binding: FragmentOpenerBinding? = null
     private val binding get() = _binding!!
 
-    private val verifViewModel: VerifViewModel by viewModels {
-        VerifViewModelFactory(
-            VerifRepository(
-                UserDatabase.getInstance(
-            requireContext())!!.userDao(),
-            UserDataStoreManager(requireContext())
-        )
-        )
-    }
+//    private val verifViewModel: VerifViewModel by viewModels {
+//        VerifViewModelFactory(
+//            VerifRepository(
+//                UserDatabase.getInstance(
+//            requireContext())!!.userDao(),
+//            UserDataStoreManager(requireContext())
+//        )
+//        )
+//    }
+    private val verifViewModel: VerifViewModel by viewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

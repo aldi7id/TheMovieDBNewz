@@ -10,16 +10,17 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.ajgroup.themoviedbnew.R
-import com.ajgroup.themoviedbnew.data.api.ApiClient
 import com.ajgroup.themoviedbnew.data.api.Status
 import com.ajgroup.themoviedbnew.data.local.UserDatabase
 import com.ajgroup.themoviedbnew.data.local.model.Favorite
 import com.ajgroup.themoviedbnew.databinding.FragmentDetailMovieBinding
 import com.ajgroup.themoviedbnew.repository.DetailRepository
+import com.ajgroup.themoviedbnew.ui.verif.VerifViewModel
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailMovieFragment : Fragment() {
     private var _binding: FragmentDetailMovieBinding? = null
@@ -27,14 +28,14 @@ class DetailMovieFragment : Fragment() {
     private val args: DetailMovieFragmentArgs by navArgs()
     private val IMAGE_BASE ="https://image.tmdb.org/t/p/w500/"
 
-    private val detailMovieViewModel by viewModels<DetailMovieViewModel> {
-        DetailMovieViewModelFactory(
-            DetailRepository(
-                ApiClient.instance,
-                UserDatabase.getInstance(requireContext())!!.favoriteDao())
-        )
-    }
-
+//    private val detailMovieViewModel by viewModels<DetailMovieViewModel> {
+//        DetailMovieViewModelFactory(
+//            DetailRepository(
+//                ApiClient.instance,
+//                UserDatabase.getInstance(requireContext())!!.favoriteDao())
+//        )
+//    }
+    private val detailMovieViewModel: DetailMovieViewModel by viewModel()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

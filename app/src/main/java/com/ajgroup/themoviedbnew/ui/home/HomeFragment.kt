@@ -10,22 +10,24 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.ajgroup.themoviedbnew.R
 import com.ajgroup.themoviedbnew.data.api.model.Result
-import com.ajgroup.themoviedbnew.data.api.ApiClient
 import com.ajgroup.themoviedbnew.data.local.UserDataStoreManager
 import com.ajgroup.themoviedbnew.databinding.FragmentHomeBinding
 import com.ajgroup.themoviedbnew.repository.HomeRepository
 import com.ajgroup.themoviedbnew.ui.adapter.HomeAdapter
+import com.ajgroup.themoviedbnew.ui.verif.VerifViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val homeViewModel by viewModels<HomeViewModel> {
-        HomeViewModelFactory(
-            HomeRepository(
-                ApiClient.instance, UserDataStoreManager(requireContext())
-            ))
-    }
+//    private val homeViewModel by viewModels<HomeViewModel> {
+//        HomeViewModelFactory(
+//            HomeRepository(
+//                ApiClient.instance, UserDataStoreManager(requireContext())
+//            ))
+//    }
+    private val homeViewModel: HomeViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,6 +59,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showDiscoveryMovies(results: List<Result>?) {
+
         val discoveryAdapter = HomeAdapter{
             val action = HomeFragmentDirections.actionHomeFragmentToDetailMovieFragment(it.id)
             findNavController().navigate(action)

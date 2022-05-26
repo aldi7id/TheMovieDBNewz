@@ -28,6 +28,7 @@ import com.ajgroup.themoviedbnew.utils.PermissionUtils
 import com.ajgroup.themoviedbnew.utils.StorageUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 class ProfileFragment : Fragment() {
@@ -37,15 +38,16 @@ class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    private val verifViewModel by viewModels<VerifViewModel> {
-        VerifViewModelFactory(
-            VerifRepository(
-                UserDatabase.getInstance(requireContext())!!.userDao(),
-                UserDataStoreManager(requireContext())
-            )
-        )
-    }
+//    private val verifViewModel by viewModels<VerifViewModel> {
+//        VerifViewModelFactory(
+//            VerifRepository(
+//                UserDatabase.getInstance(requireContext())!!.userDao(),
+//                UserDataStoreManager(requireContext())
+//            )
+//        )
+//    }
 
+    private val verifViewModel: VerifViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +60,6 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.btnGallery.setOnClickListener {
             if (PermissionUtils.isPermissionsGranted(requireActivity(), getRequiredPermission()) {
                     activity?.let {
@@ -86,8 +87,10 @@ class ProfileFragment : Fragment() {
             verifViewModel.getUser(email)
         }
 
+
         verifViewModel.user.observe(viewLifecycleOwner) {
             binding.apply {
+                tvEditProfile.setText(it?.email)
                 etName.setText(it?.name)
                 etPassword.setText(it?.password)
                 if (it?.avatarPath != "") {
@@ -126,7 +129,7 @@ class ProfileFragment : Fragment() {
         }
 
         binding.tvLogout.setOnClickListener {
-            //verifViewModel.deletePref()
+            verifViewModel.deletePref()
             it.findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
         }
     }

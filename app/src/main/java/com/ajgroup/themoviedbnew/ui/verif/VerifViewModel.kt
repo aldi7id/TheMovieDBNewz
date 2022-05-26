@@ -21,6 +21,7 @@ class VerifViewModel(
         }
     }
     fun updateUser(user: User) = repository.updateUser(user)
+    suspend fun updateAvatarPath(id:Int, avatarPath: String) = repository.updateAvatarPath(id,avatarPath)
     fun login(email: String, password: String) = repository.login(email,password)
     fun register(user: User) = repository.register(user)
     fun checkEmail(email: String) = repository.checkEmail(email)
