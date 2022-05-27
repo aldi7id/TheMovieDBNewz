@@ -9,15 +9,18 @@ import com.ajgroup.themoviedbnew.data.local.model.Favorite
 import com.ajgroup.themoviedbnew.databinding.FavoriteListLayoutBinding
 import com.bumptech.glide.Glide
 
-class FavoriteAdapter(private val onClick:(Favorite)->Unit)
-    : ListAdapter<Favorite, FavoriteAdapter.ViewHolder>(FavoriteComparator()){
-    class ViewHolder(private val binding: FavoriteListLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+class FavoriteAdapter(private val onClick: (Favorite) -> Unit) :
+    ListAdapter<Favorite, FavoriteAdapter.ViewHolder>(FavoriteComparator()) {
+    class ViewHolder(private val binding: FavoriteListLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(currentFavorite: Favorite,
-        onClick: (Favorite) -> Unit){
+        fun bind(
+            currentFavorite: Favorite,
+            onClick: (Favorite) -> Unit
+        ) {
             binding.apply {
                 Glide.with(binding.ivPoster)
-                    .load("https://image.tmdb.org/t/p/w500"+currentFavorite.posterPath)
+                    .load("https://image.tmdb.org/t/p/w500" + currentFavorite.posterPath)
                     .into(ivPoster)
                 root.setOnClickListener {
                     onClick(currentFavorite)
@@ -29,6 +32,7 @@ class FavoriteAdapter(private val onClick:(Favorite)->Unit)
         }
 
     }
+
     class FavoriteComparator : DiffUtil.ItemCallback<Favorite>() {
         override fun areItemsTheSame(oldItem: Favorite, newItem: Favorite): Boolean {
             return oldItem === newItem
@@ -41,7 +45,8 @@ class FavoriteAdapter(private val onClick:(Favorite)->Unit)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = FavoriteListLayoutBinding.inflate(
-            LayoutInflater.from(parent.context),parent,false)
+            LayoutInflater.from(parent.context), parent, false
+        )
 
         return ViewHolder(binding)
     }

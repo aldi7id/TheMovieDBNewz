@@ -6,15 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ajgroup.themoviedbnew.R
-import com.ajgroup.themoviedbnew.data.local.UserDataStoreManager
-import com.ajgroup.themoviedbnew.data.local.UserDatabase
 import com.ajgroup.themoviedbnew.data.local.model.User
 import com.ajgroup.themoviedbnew.databinding.FragmentRegisterBinding
-import com.ajgroup.themoviedbnew.repository.VerifRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,21 +19,14 @@ class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
-
-//    private val verifViewModel by viewModels<VerifViewModel>{
-//        VerifViewModelFactory(VerifRepository(UserDatabase.getInstance(requireContext())!!.userDao(),
-//        UserDataStoreManager(requireContext())
-//        ))
-//    }
     private val verifViewModel: VerifViewModel by viewModel()
-
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRegisterBinding.inflate(inflater,container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -61,7 +50,11 @@ class RegisterFragment : Fragment() {
                         if (isEmailExist == null) {
                             registerUser(user)
                         } else {
-                            Toast.makeText(context, getString(R.string.email_registered), Toast.LENGTH_SHORT)
+                            Toast.makeText(
+                                context,
+                                getString(R.string.email_registered),
+                                Toast.LENGTH_SHORT
+                            )
                                 .show()
                         }
                     }
@@ -73,14 +66,19 @@ class RegisterFragment : Fragment() {
     }
 
     private fun registerUser(user: User) {
-        lifecycleScope.launch(Dispatchers.IO){
+        lifecycleScope.launch(Dispatchers.IO) {
             val userIsRegister = verifViewModel.register(user)
 
             activity?.runOnUiThread {
-                if (userIsRegister == (0).toLong()){
-                    Toast.makeText(context, getString(R.string.register_failed), Toast.LENGTH_SHORT).show()
+                if (userIsRegister == (0).toLong()) {
+                    Toast.makeText(context, getString(R.string.register_failed), Toast.LENGTH_SHORT)
+                        .show()
                 } else {
-                    Toast.makeText(context, getString(R.string.register_success), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        getString(R.string.register_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     findNavController().popBackStack()
                 }
             }

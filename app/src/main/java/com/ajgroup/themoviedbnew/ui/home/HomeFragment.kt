@@ -5,14 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.ajgroup.themoviedbnew.R
 import com.ajgroup.themoviedbnew.data.api.model.Result
-import com.ajgroup.themoviedbnew.data.local.UserDataStoreManager
 import com.ajgroup.themoviedbnew.databinding.FragmentHomeBinding
-import com.ajgroup.themoviedbnew.repository.HomeRepository
 import com.ajgroup.themoviedbnew.ui.adapter.HomeAdapter
 import com.ajgroup.themoviedbnew.ui.verif.VerifViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,13 +18,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-//    private val homeViewModel by viewModels<HomeViewModel> {
-//        HomeViewModelFactory(
-//            HomeRepository(
-//                ApiClient.instance, UserDataStoreManager(requireContext())
-//            ))
-//    }
     private val homeViewModel: HomeViewModel by viewModel()
+    private val verifViewModel: VerifViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,26 +39,31 @@ class HomeFragment : Fragment() {
         binding.ivProfile.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
         }
-        homeViewModel.namaPreference.observe(viewLifecycleOwner){
-            if (it!=""){
+        binding.ivExit.setOnClickListener {
+            verifViewModel.deletePref()
+            it.findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+        }
+        homeViewModel.namaPreference.observe(viewLifecycleOwner) {
+            if (it != "") {
                 binding.welcome.text = "Welcome,\n$it!"
             }
         }
 
-        homeViewModel.discoveryMovies.observe(viewLifecycleOwner){
+        homeViewModel.discoveryMovies.observe(viewLifecycleOwner) {
             showDiscoveryMovies(it.results)
         }
     }
 
     private fun showDiscoveryMovies(results: List<Result>?) {
 
-        val discoveryAdapter = HomeAdapter{
+        val discoveryAdapter = HomeAdapter {
             val action = HomeFragmentDirections.actionHomeFragmentToDetailMovieFragment(it.id)
             findNavController().navigate(action)
         }
         discoveryAdapter.submitList(results)
         binding.rvList.adapter = discoveryAdapter
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

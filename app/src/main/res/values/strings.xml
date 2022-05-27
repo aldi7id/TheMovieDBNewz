@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">The Movie DB New</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_login">Login</string>
     <string name="et_email">Email</string>
-    <string name="et_password">password</string>
+    <string name="et_password">Password</string>
     <string name="tv_signup">Sign Up</string>
     <string name="tv_logo">Logo</string>
     <string name="register_failed">Register Failed</string>
@@ -13,17 +11,17 @@
     <string name="email_pass_wrong">Email and Password Wrong</string>
     <string name="tv_welcome">Welcome:</string>
     <string name="tv_discovery">Discovery</string>
-    <string name="tv_tittle">Tittle</string>
-    <string name="tv_genres">Genres</string>
-    <string name="tv_release_date">Release Date:</string>
-    <string name="tv_status">Status:</string>
-    <string name="tv_taglines">Taglines:</string>
+    <string name="tv_tittle">Tittle: </string>
+    <string name="tv_genres">Genres: </string>
+    <string name="tv_release_date">Release Date: </string>
+    <string name="tv_status">Status: </string>
+    <string name="tv_taglines">Taglines: </string>
     <string name="tv_desc">Description</string>
-    <string name="loading">Loading Movies...</string>
+    <string name="loading">Loading Movies…</string>
     <string name="loaded">Movies Detail Loaded</string>
     <string name="error">Error</string>
     <string name="rating">Rating</string>
-    <string name="overview">overview</string>
+    <string name="overview">Overview</string>
     <string name="your_favorite">Your Favorite</string>
     <string name="tv_name">Name</string>
     <string name="tv_password">Password</string>

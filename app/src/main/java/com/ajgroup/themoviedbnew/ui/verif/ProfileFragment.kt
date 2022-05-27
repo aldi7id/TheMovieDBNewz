@@ -15,15 +15,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.ajgroup.themoviedbnew.R
-import com.ajgroup.themoviedbnew.data.local.UserDataStoreManager
-import com.ajgroup.themoviedbnew.data.local.UserDatabase
 import com.ajgroup.themoviedbnew.data.local.model.User
 import com.ajgroup.themoviedbnew.databinding.FragmentProfileBinding
-import com.ajgroup.themoviedbnew.repository.VerifRepository
 import com.ajgroup.themoviedbnew.utils.PermissionUtils
 import com.ajgroup.themoviedbnew.utils.StorageUtils
 import kotlinx.coroutines.Dispatchers
@@ -37,22 +33,12 @@ class ProfileFragment : Fragment() {
     var iduser: Int? = -1
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-
-//    private val verifViewModel by viewModels<VerifViewModel> {
-//        VerifViewModelFactory(
-//            VerifRepository(
-//                UserDatabase.getInstance(requireContext())!!.userDao(),
-//                UserDataStoreManager(requireContext())
-//            )
-//        )
-//    }
-
     private val verifViewModel: VerifViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
@@ -82,7 +68,7 @@ class ProfileFragment : Fragment() {
         }
         var email = ""
 
-        verifViewModel.emailPreference.observe(viewLifecycleOwner){
+        verifViewModel.emailPreference.observe(viewLifecycleOwner) {
             email = it
             verifViewModel.getUser(email)
         }
@@ -135,12 +121,13 @@ class ProfileFragment : Fragment() {
     }
 
     private fun openImage(imageSource: Int) {
-        if (imageSource==1){
+        if (imageSource == 1) {
             openGallery()
-        }else{
+        } else {
             openCamera()
         }
     }
+
     private fun openCamera() {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         cameraLauncher.launch(cameraIntent)
@@ -150,14 +137,16 @@ class ProfileFragment : Fragment() {
         val intentGallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
         galleryLauncher.launch(intentGallery)
     }
-    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-        val granted = permissions.entries.all {
-            it.value
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            val granted = permissions.entries.all {
+                it.value
+            }
+            if (granted) {
+                openImage(imageSource)
+            }
         }
-        if (granted) {
-            openImage(imageSource)
-        }
-    }
     private val cameraLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
@@ -177,6 +166,7 @@ class ProfileFragment : Fragment() {
     private fun loadImage(uri: Uri) {
         binding.ivPhotoProfile.setImageURI(uri)
     }
+
     private fun getRequiredPermission(): Array<String> {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
@@ -188,15 +178,19 @@ class ProfileFragment : Fragment() {
             )
         }
     }
-    private var galleryLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            imageUri = data?.data
-            imageUri?.let { loadImage(it) }
+
+    private var galleryLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                imageUri = data?.data
+                imageUri?.let { loadImage(it) }
+            }
         }
-    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+
     }
 }

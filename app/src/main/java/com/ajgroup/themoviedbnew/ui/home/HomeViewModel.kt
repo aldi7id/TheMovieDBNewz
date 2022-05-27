@@ -3,17 +3,13 @@ package com.ajgroup.themoviedbnew.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.ajgroup.themoviedbnew.data.api.Resource
 import com.ajgroup.themoviedbnew.data.api.model.MoviesResponse
 import com.ajgroup.themoviedbnew.repository.HomeRepository
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
 
-class HomeViewModel(private val repository: HomeRepository): ViewModel() {
+class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
 
     val errorDiscovery: MutableLiveData<String> = MutableLiveData()
     val isLoadingDiscovery = MutableLiveData<Boolean>()
@@ -24,7 +20,7 @@ class HomeViewModel(private val repository: HomeRepository): ViewModel() {
     }
     val discoveryMovies: LiveData<MoviesResponse> = _discoveryMovies
 
-    fun getDiscoveryMovies(){
+    fun getDiscoveryMovies() {
         isLoadingDiscovery.postValue(true)
         repository.getDiscoverMovies().enqueue(object : Callback<MoviesResponse> {
             override fun onResponse(
@@ -45,5 +41,6 @@ class HomeViewModel(private val repository: HomeRepository): ViewModel() {
 
         })
     }
+
     val namaPreference = repository.getNama()
 }

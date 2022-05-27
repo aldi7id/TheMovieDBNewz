@@ -56,11 +56,11 @@ class RegisterLoginTest {
                 isDisplayed()
             )
         )
-        textInputEditText.perform(replaceText("aldi2@gmail.com"), closeSoftKeyboard())
+        textInputEditText.perform(replaceText("aldi3@gmail.com"), closeSoftKeyboard())
 
         val textInputEditText2 = onView(
             allOf(
-                withId(R.id.et_email), withText("aldi2@gmail.com"),
+                withId(R.id.et_email), withText("aldi3@gmail.com"),
                 childAtPosition(
                     childAtPosition(
                         withId(R.id.til_email),
@@ -191,11 +191,11 @@ class RegisterLoginTest {
                 isDisplayed()
             )
         )
-        textInputEditText9.perform(replaceText("aldi2@gmail.com"), closeSoftKeyboard())
+        textInputEditText9.perform(replaceText("aldi3@gmail.com"), closeSoftKeyboard())
 
         val textInputEditText10 = onView(
             allOf(
-                withId(R.id.et_email), withText("aldi2@gmail.com"),
+                withId(R.id.et_email), withText("aldi3@gmail.com"),
                 childAtPosition(
                     childAtPosition(
                         withId(R.id.til_email),

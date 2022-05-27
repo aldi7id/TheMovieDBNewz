@@ -11,35 +11,36 @@ import kotlinx.coroutines.flow.map
 
 class UserDataStoreManager(private val dataStore: DataStore<Preferences>) {
 
-    val getEmail: Flow<String> = dataStore.data
-        .map { preferences ->
-            preferences[emailKey] ?: ""
-        }
 
     val getNama: Flow<String> = dataStore.data
         .map { preferences ->
             preferences[namaKey] ?: ""
         }
-
-    suspend fun setEmail(email: String){
-        dataStore.edit {
-            it[emailKey] = email
+    val getEmail: Flow<String> = dataStore.data
+        .map { preferences ->
+            preferences[emailKey] ?: ""
         }
-    }
 
-    suspend fun setNama(nama: String){
+
+    suspend fun setNama(nama: String) {
         dataStore.edit {
             it[namaKey] = nama
         }
     }
 
-    suspend fun deletePref(){
+    suspend fun setEmail(email: String) {
+        dataStore.edit {
+            it[emailKey] = email
+        }
+    }
+
+    suspend fun deletePref() {
         dataStore.edit {
             it.clear()
         }
     }
 
-    companion object{
+    companion object {
         private const val EMAIL_KEY = "emailkey"
         private const val NAMA_KEY = "jumlahkey"
         val namaKey = stringPreferencesKey(NAMA_KEY)

@@ -10,25 +10,26 @@ import com.ajgroup.themoviedbnew.data.local.model.Favorite
 import com.ajgroup.themoviedbnew.repository.DetailRepository
 import kotlinx.coroutines.launch
 
-class DetailMovieViewModel(private val repository: DetailRepository):ViewModel() {
+class DetailMovieViewModel(private val repository: DetailRepository) : ViewModel() {
     private val _detailMovie = MutableLiveData<Resource<DetailResponse>>()
     val detailMovie: LiveData<Resource<DetailResponse>> get() = _detailMovie
 
-    fun getDetailMovie(movieId: Int){
+    fun getDetailMovie(movieId: Int) {
         viewModelScope.launch {
             _detailMovie.postValue(Resource.loading())
             try {
                 _detailMovie.postValue(Resource.success(repository.getDetailMovie(movieId)))
-            }catch (exp: Exception){
+            } catch (exp: Exception) {
                 _detailMovie.postValue(Resource.error(exp.localizedMessage ?: "Error occured"))
             }
         }
     }
+
     //favorite teritory
     private val _isFavoriteExist = MutableLiveData<Boolean>()
     val isFavoriteExist = _isFavoriteExist
 
-    fun changeFavorite(state: Boolean){
+    fun changeFavorite(state: Boolean) {
         _isFavoriteExist.postValue(state)
     }
 

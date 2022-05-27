@@ -10,30 +10,33 @@ import kotlinx.coroutines.launch
 
 class VerifViewModel(
     private val repository: VerifRepository
-):ViewModel() {
+) : ViewModel() {
     private val _user: MutableLiveData<User?> = MutableLiveData()
     val user: LiveData<User?> = _user
 
-    fun getUser(email: String){
+    fun getUser(email: String) {
         viewModelScope.launch {
             val newUser = repository.getUser(email)
             _user.postValue(newUser)
         }
     }
+
     fun updateUser(user: User) = repository.updateUser(user)
-    suspend fun updateAvatarPath(id:Int, avatarPath: String) = repository.updateAvatarPath(id,avatarPath)
-    fun login(email: String, password: String) = repository.login(email,password)
+    suspend fun updateAvatarPath(id: Int, avatarPath: String) =
+        repository.updateAvatarPath(id, avatarPath)
+
+    fun login(email: String, password: String) = repository.login(email, password)
     fun register(user: User) = repository.register(user)
     fun checkEmail(email: String) = repository.checkEmail(email)
 
     //login preference
-    fun setEmailPreference(email: String){
+    fun setEmailPreference(email: String) {
         viewModelScope.launch {
             repository.setEmail(email)
         }
     }
 
-    fun setNamaPreference(nama: String){
+    fun setNamaPreference(nama: String) {
         viewModelScope.launch {
             repository.setNama(nama)
         }

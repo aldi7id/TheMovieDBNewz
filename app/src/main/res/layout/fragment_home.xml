@@ -46,6 +46,18 @@
                 android:src="@drawable/ic_favorite"
                 android:background="@drawable/transparent"
                 android:contentDescription="@string/tv_logo" />
+            <ImageButton
+                app:layout_constraintEnd_toStartOf="@id/iv_favorite"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/iv_exit"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:src="@drawable/ic_exit"
+                android:background="@drawable/transparent"
+                android:contentDescription="@string/tv_logo" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

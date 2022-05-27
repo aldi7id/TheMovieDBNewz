@@ -6,8 +6,10 @@ import org.koin.dsl.module
 
 val databaseModule = module {
     single {
-        Room.databaseBuilder(get(),
-        UserDatabase::class.java, "userdatabase.db").build()
+        Room.databaseBuilder(
+            get(),
+            UserDatabase::class.java, "userdatabase.db"
+        ).build()
     }
     single {
         get<UserDatabase>().userDao()

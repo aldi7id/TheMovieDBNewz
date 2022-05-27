@@ -11,15 +11,22 @@ import androidx.core.app.ActivityCompat
 object PermissionUtils {
     private const val REQUEST_CODE_PERMISSIONS = 100
 
-    private fun hasPermissions(context: Context, vararg permissions: String): Boolean = permissions.all {
-        ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
-    }
-    private fun isShouldShowRationale(activity: Activity, vararg permissions: String): Boolean = permissions.any {
-        ActivityCompat.shouldShowRequestPermissionRationale(activity, it)
-    }
+    private fun hasPermissions(context: Context, vararg permissions: String): Boolean =
+        permissions.all {
+            ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+        }
 
-    fun isPermissionsGranted(activity: Activity, permissions: Array<String>, request:()->Unit): Boolean {
-        return if (!hasPermissions(activity,*permissions)) {
+    private fun isShouldShowRationale(activity: Activity, vararg permissions: String): Boolean =
+        permissions.any {
+            ActivityCompat.shouldShowRequestPermissionRationale(activity, it)
+        }
+
+    fun isPermissionsGranted(
+        activity: Activity,
+        permissions: Array<String>,
+        request: () -> Unit
+    ): Boolean {
+        return if (!hasPermissions(activity, *permissions)) {
             if (isShouldShowRationale(activity, *permissions)) {
                 showPermissionDeniedDialog(activity)
             } else {
