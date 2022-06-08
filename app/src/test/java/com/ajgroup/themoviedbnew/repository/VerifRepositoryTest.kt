@@ -17,6 +17,7 @@ class VerifRepositoryTest {
     private lateinit var userDataStoreManager: UserDataStoreManager
 
     private lateinit var verifRepository: VerifRepository
+
     @Before
     fun setUp() {
         userDao = mockk()
@@ -30,18 +31,16 @@ class VerifRepositoryTest {
 
         every {
             runBlocking {
-                userDao.login("email", "password")
+                userDao.login("email@gmail.com", "password")
             }
         } returns returnLogin
 
-        verifRepository.login("email", "password")
+        verifRepository.login("email@gmail.com", "password")
 
         verify {
             runBlocking {
-                userDao.login("email", "password")
+                userDao.login("email@gmail.com", "password")
             }
         }
-
-
     }
 }

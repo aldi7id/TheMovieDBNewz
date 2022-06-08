@@ -6,12 +6,58 @@
     android:orientation="vertical"
     android:padding="10dp"
     android:background="#055FA8"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/iv_profile"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:src="@drawable/ic_profile"
+            android:background="@drawable/transparent"
+            android:contentDescription="@string/tv_logo" />
+        <ImageButton
+            app:layout_constraintEnd_toStartOf="@id/iv_profile"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/iv_favorite2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:src="@drawable/ic_favorite"
+            android:background="@drawable/transparent"
+            android:contentDescription="@string/tv_logo" />
+        <ImageButton
+            app:layout_constraintEnd_toStartOf="@id/iv_favorite2"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/iv_exit"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:src="@drawable/ic_exit"
+            android:background="@drawable/transparent"
+            android:contentDescription="@string/tv_logo" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
         >
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
