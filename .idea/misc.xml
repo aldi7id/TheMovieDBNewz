@@ -7,14 +7,16 @@
         <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/drawable-v24/ic_favorite_2.xml" value="0.1" />
         <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/drawable-v24/transparent.xml" value="0.1" />
         <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/drawable/ic_exit.xml" value="0.1" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/drawable/ic_home.xml" value="0.1" />
         <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/favorite_list_layout.xml" value="0.33" />
-        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_detail_movie.xml" value="0.33" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_detail_movie.xml" value="0.20097244732576985" />
         <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_favorite.xml" value="0.25" />
         <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_login.xml" value="0.19589257503949448" />
         <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_opener.xml" value="0.1" />
-        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_profiles.xml" value="0.1" />
         <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/fragment_register.xml" value="0.18" />
         <entry key="..\:/Users/Anonymous/AndroidStudioProjects/TheMovieDBNew/app/src/main/res/layout/item_content.xml" value="0.1" />
       </map>

@@ -9,7 +9,7 @@ val databaseModule = module {
         Room.databaseBuilder(
             get(),
             UserDatabase::class.java, "userdatabase.db"
-        ).build()
+        ).allowMainThreadQueries().build()
     }
     single {
         get<UserDatabase>().userDao()

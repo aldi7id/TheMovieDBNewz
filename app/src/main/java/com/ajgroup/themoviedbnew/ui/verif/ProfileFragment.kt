@@ -46,6 +46,17 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+            binding.ivHome.setOnClickListener {
+                val action =
+                    ProfileFragmentDirections.actionProfileFragmentToHomeFragment()
+                it.findNavController().navigate(action)
+            }
+            binding.ivFavorite.setOnClickListener {
+                val action =
+                    ProfileFragmentDirections.actionProfileFragmentToFavoriteFragment()
+                it.findNavController().navigate(action)
+            }
         binding.btnGallery.setOnClickListener {
             if (PermissionUtils.isPermissionsGranted(requireActivity(), getRequiredPermission()) {
                     activity?.let {
