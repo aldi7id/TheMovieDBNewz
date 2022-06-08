@@ -8,6 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -77,22 +78,25 @@ fun DetailHeader(
         Text(
             text = title,
             maxLines = 3,
-            style = MaterialTheme.typography.h1,
+            style = MaterialTheme.typography.h6,
+            color = Color.White,
         )
 
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = "Genre",
             fontSize = 12.sp,
+            color = Color.White
         )
-        Text(text = genres.joinToString(separator = ", "))
+        Text(text = genres.joinToString(separator = ", "), color = Color.White)
 
         Spacer(modifier = Modifier.height(8.dp))
         Text(
             text = dateLabel,
             fontSize = 12.sp,
+            color = Color.White
         )
-        Text(text = dateData)
+        Text(text = dateData, color = Color.White)
     }
 }
 @Composable
@@ -105,15 +109,17 @@ fun TaglineAndOverview(
     ) {
         Text(
             text = tagline ?: "",
-            style = MaterialTheme.typography.h2,
+            style = MaterialTheme.typography.h6,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
+            color = Color.White
         )
         Text(
             text = overview ?: "",
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.body2,
             textAlign = TextAlign.Justify,
             modifier = Modifier.fillMaxWidth(),
+            color = Color.White
         )
     }
 }

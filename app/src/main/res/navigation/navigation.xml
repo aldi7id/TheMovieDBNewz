@@ -32,8 +32,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.ajgroup.themoviedbnew.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment" />
@@ -73,8 +72,7 @@
     <fragment
         android:id="@+id/detailMovieFragment"
         android:name="com.ajgroup.themoviedbnew.ui.detail.DetailMovieFragment"
-        android:label="fragment_detail_movie"
-        tools:layout="@layout/fragment_detail_movie" >
+        android:label="fragment_detail_movie">
         <argument
             android:name="movie_id"
             app:argType="integer"

@@ -15,6 +15,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
@@ -26,10 +28,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ajgroup.themoviedbnew.R
+import com.ajgroup.themoviedbnew.data.api.Resource
 import com.ajgroup.themoviedbnew.data.api.Status
 import com.ajgroup.themoviedbnew.data.api.model.DetailResponse
 import com.ajgroup.themoviedbnew.data.local.model.Favorite
-import com.ajgroup.themoviedbnew.databinding.FragmentDetailMovieBinding
 import com.ajgroup.themoviedbnew.ui.favorite.FavoriteFragmentDirections
 import com.ajgroup.themoviedbnew.ui.home.HomeFragmentDirections
 import com.bumptech.glide.Glide
@@ -43,16 +45,17 @@ class DetailMovieFragment : Fragment() {
 //    private var _binding: FragmentDetailMovieBinding? = null
 //    private val binding get() = _binding!!
     private val args: DetailMovieFragmentArgs by navArgs()
-    private var movieDetail: DetailResponse? = null
+   // private var movieDetail: Resource<DetailResponse>
 //    private val IMAGE_BASE = "https://image.tmdb.org/t/p/w500/"
 //
 //
-//    private val detailMovieViewModel: DetailMovieViewModel by viewModel()
+private val detailMovieViewModel: DetailMovieViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        detailMovieViewModel.getDetailMovie(args.movieId)
         return ComposeView(requireContext()).apply {
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -90,14 +93,15 @@ class DetailMovieFragment : Fragment() {
                                 Toast.LENGTH_SHORT
                             ).show()
                         })
+                    }
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(Color(0xFF032541))
+                    ) {
                         ItemDetail()
                     }
-                    androidx.compose.material.Surface(
-                        modifier = Modifier.fillMaxSize(),
-                        color = Color(0xFF032541)
-                    ) {
-                        //ItemDetail()
-                    }
+
                 }
             }
         }
@@ -116,20 +120,35 @@ class DetailMovieFragment : Fragment() {
     }
     @Composable
     fun ItemDetail(){
-        val movieId = args.movieId
         val vm = getViewModel<DetailMovieViewModel>()
-        vm.getDetailMovie(movieId)
+        val movieDetail by vm.detailMovie.observeAsState()
+        MovieDetail(movieDetail)
         movieDetail?.let {
-            CustomDetails(
-                title = it.title,
-                posterPath = it.posterPath,
-                genres = it.genres.map { it.name },
-                rating = it.voteAverage.toString(),
-                dateLabel = "Releate Date",
-                dateData = it.releaseDate,
-                tagline = it.tagline,
-                overview = it.overview
-            )
+
+        }
+    }
+    @Composable
+    fun MovieDetail(
+        movieDetail: Resource<DetailResponse>?,
+    ){
+        when(movieDetail?.status){
+            Status.LOADING -> {
+                CircularProgressIndicator()
+            }
+            Status.SUCCESS -> {
+                movieDetail.data?.genres?.map { it.name }?.let {
+                    CustomDetails(
+                        title = movieDetail.data?.title.toString(),
+                        posterPath = movieDetail.data?.posterPath.toString(),
+                        genres = it,
+                        rating = movieDetail.data?.voteAverage.toString(),
+                        dateLabel = "Releate Date",
+                        dateData = movieDetail.data?.releaseDate.toString(),
+                        tagline = movieDetail.data?.tagline,
+                        overview = movieDetail.data?.overview
+                    )
+                }
+            }
         }
     }
 }
