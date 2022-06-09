@@ -11,6 +11,9 @@ interface ApiService {
     @GET("discover/movie")
     fun getDiscoverMovie(): Call<MoviesResponse>
 
+    @GET("movie/now_playing")
+    suspend fun getAllPlayingNow(): MoviesResponse
+
     @GET("movie/{movieId}")
     suspend fun getDetailMovie(@Path("movieId") movieId: Int): DetailResponse
 

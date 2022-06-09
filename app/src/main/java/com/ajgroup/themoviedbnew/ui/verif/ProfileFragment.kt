@@ -1,3 +1,5 @@
+@file:Suppress("UsePropertyAccessSyntax")
+
 package com.ajgroup.themoviedbnew.ui.verif
 
 import android.Manifest
@@ -30,7 +32,7 @@ import java.util.*
 class ProfileFragment : Fragment() {
     private var imageUri: Uri? = null
     private var imageSource = -1
-    var iduser: Int? = -1
+    private var iduser: Int? = -1
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private val verifViewModel: VerifViewModel by viewModel()
@@ -46,6 +48,17 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+            binding.ivHome.setOnClickListener {
+                val action =
+                    ProfileFragmentDirections.actionProfileFragmentToHomeFragment()
+                it.findNavController().navigate(action)
+            }
+            binding.ivFavorite.setOnClickListener {
+                val action =
+                    ProfileFragmentDirections.actionProfileFragmentToFavoriteFragment()
+                it.findNavController().navigate(action)
+            }
         binding.btnGallery.setOnClickListener {
             if (PermissionUtils.isPermissionsGranted(requireActivity(), getRequiredPermission()) {
                     activity?.let {
