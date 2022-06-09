@@ -1,8 +1,6 @@
 package com.ajgroup.themoviedbnew.ui.home
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +18,6 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
@@ -31,12 +28,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.ajgroup.themoviedbnew.R
 import com.ajgroup.themoviedbnew.data.api.Resource
 import com.ajgroup.themoviedbnew.data.api.Status
 import com.ajgroup.themoviedbnew.data.api.model.MoviesResponse
-import com.ajgroup.themoviedbnew.ui.detail.DetailMovieFragment
 import org.koin.androidx.compose.getViewModel
 
 class HomeFragment : Fragment() {
@@ -59,7 +56,7 @@ class HomeFragment : Fragment() {
                 Column(
                     Modifier
                         .background(MaterialTheme.colors.secondary)) {
-                    Row() {
+                    Row {
                         HeaderMenu({
                             val action = HomeFragmentDirections.actionHomeFragmentToLoginFragment()
                             findNavController().navigate(action)

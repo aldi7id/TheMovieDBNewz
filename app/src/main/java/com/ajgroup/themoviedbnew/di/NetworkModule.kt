@@ -10,7 +10,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-val BASE_URL = "https://api.themoviedb.org/3/"
+const val BASE_URL = "https://api.themoviedb.org/3/"
 val networkModule = module {
     single {
         HttpLoggingInterceptor().apply {

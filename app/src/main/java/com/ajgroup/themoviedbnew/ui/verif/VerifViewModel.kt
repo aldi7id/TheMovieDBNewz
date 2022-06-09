@@ -22,19 +22,19 @@ class VerifViewModel(
     }
 
     fun updateUser(user: User) = repository.updateUser(user)
-    suspend fun updateAvatarPath(id: Int, avatarPath: String) =
-        repository.updateAvatarPath(id, avatarPath)
+//    suspend fun updateAvatarPath(id: Int, avatarPath: String) =
+//        repository.updateAvatarPath(id, avatarPath)
 
     fun login(email: String, password: String) = repository.login(email, password)
     fun register(user: User) = repository.register(user)
-    fun checkEmail(email: String) = repository.checkEmail(email)
+    //fun checkEmail(email: String) = repository.checkEmail(email)
 
     //login preference
-    fun setEmailPreference(email: String) {
-        viewModelScope.launch {
-            repository.setEmail(email)
-        }
-    }
+//    fun setEmailPreference(email: String) {
+//        viewModelScope.launch {
+//            repository.setEmail(email)
+//        }
+//    }
 
     fun setNamaPreference(nama: String) {
         viewModelScope.launch {

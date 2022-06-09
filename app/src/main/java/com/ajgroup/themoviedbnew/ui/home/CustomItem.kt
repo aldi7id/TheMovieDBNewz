@@ -29,7 +29,7 @@ fun CustomItem(movie: Result, navigateToDetail: (Int) -> Unit) {
         }
         .height(110.dp), shape = RoundedCornerShape(8.dp), elevation = 4.dp)
     {
-        Surface() {
+        Surface {
             Row(
                 modifier = Modifier
                     .background(Color.White)

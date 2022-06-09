@@ -1,8 +1,6 @@
 package com.ajgroup.themoviedbnew.ui.verif
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +16,6 @@ import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -34,14 +31,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ajgroup.themoviedbnew.R
 import com.ajgroup.themoviedbnew.data.local.model.User
-import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.compose.getViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class RegisterFragment : Fragment() {
@@ -66,15 +60,17 @@ class RegisterFragment : Fragment() {
                         .fillMaxSize()
                         .background(Color(0xFF032541))) {
                     HeaderRegister()
-                    InputRegisterForm({
-                        val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+                    InputRegisterForm {
+                        val action =
+                            RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
                         findNavController().navigate(action)
-                    })
-                    ActionItemRegister({
-                        val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
+                    }
+                    ActionItemRegister {
+                        val action =
+                            RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
                         findNavController().navigate(action)
 
-                    })
+                    }
                 }
             }
         }

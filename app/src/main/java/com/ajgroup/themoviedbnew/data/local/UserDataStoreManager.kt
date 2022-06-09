@@ -1,21 +1,19 @@
 package com.ajgroup.themoviedbnew.data.local
 
-import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class UserDataStoreManager(private val dataStore: DataStore<Preferences>) {
 
 
-    val getNama: Flow<String> = dataStore.data
-        .map { preferences ->
-            preferences[namaKey] ?: ""
-        }
+//    val getNama: Flow<String> = dataStore.data
+//        .map { preferences ->
+//            preferences[namaKey] ?: ""
+//        }
     val getEmail: Flow<String> = dataStore.data
         .map { preferences ->
             preferences[emailKey] ?: ""
@@ -28,11 +26,11 @@ class UserDataStoreManager(private val dataStore: DataStore<Preferences>) {
         }
     }
 
-    suspend fun setEmail(email: String) {
-        dataStore.edit {
-            it[emailKey] = email
-        }
-    }
+//    suspend fun setEmail(email: String) {
+//        dataStore.edit {
+//            it[emailKey] = email
+//        }
+//    }
 
     suspend fun deletePref() {
         dataStore.edit {

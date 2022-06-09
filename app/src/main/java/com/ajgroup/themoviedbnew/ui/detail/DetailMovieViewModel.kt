@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ajgroup.themoviedbnew.data.api.Resource
 import com.ajgroup.themoviedbnew.data.api.model.DetailResponse
-import com.ajgroup.themoviedbnew.data.local.model.Favorite
 import com.ajgroup.themoviedbnew.repository.DetailRepository
 import kotlinx.coroutines.launch
 
@@ -25,15 +24,15 @@ class DetailMovieViewModel(private val repository: DetailRepository) : ViewModel
         }
     }
 
-    //favorite teritory
-    private val _isFavoriteExist = MutableLiveData<Boolean>()
-    val isFavoriteExist = _isFavoriteExist
-
-    fun changeFavorite(state: Boolean) {
-        _isFavoriteExist.postValue(state)
-    }
-
-    fun getFavoriteById(movieId: Int) = repository.getFavoriteById(movieId)
-    fun addToFavorite(favorite: Favorite) = repository.addToFavorite(favorite)
-    fun removeFromFavorite(favorite: Favorite) = repository.removeFromFavorite(favorite)
+//    //favorite teritory
+//    private val _isFavoriteExist = MutableLiveData<Boolean>()
+//    val isFavoriteExist = _isFavoriteExist
+//
+//    fun changeFavorite(state: Boolean) {
+//        _isFavoriteExist.postValue(state)
+//    }
+//
+//    fun getFavoriteById(movieId: Int) = repository.getFavoriteById(movieId)
+//    fun addToFavorite(favorite: Favorite) = repository.addToFavorite(favorite)
+//    fun removeFromFavorite(favorite: Favorite) = repository.removeFromFavorite(favorite)
 }

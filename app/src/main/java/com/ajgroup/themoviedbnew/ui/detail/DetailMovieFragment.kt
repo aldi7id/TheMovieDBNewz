@@ -1,7 +1,6 @@
 package com.ajgroup.themoviedbnew.ui.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,20 +22,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ajgroup.themoviedbnew.R
 import com.ajgroup.themoviedbnew.data.api.Resource
 import com.ajgroup.themoviedbnew.data.api.Status
 import com.ajgroup.themoviedbnew.data.api.model.DetailResponse
-import com.ajgroup.themoviedbnew.data.local.model.Favorite
-import com.ajgroup.themoviedbnew.ui.favorite.FavoriteFragmentDirections
-import com.ajgroup.themoviedbnew.ui.home.HomeFragmentDirections
-import com.bumptech.glide.Glide
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import org.koin.androidx.compose.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -138,14 +129,14 @@ private val detailMovieViewModel: DetailMovieViewModel by viewModel()
             Status.SUCCESS -> {
                 movieDetail.data?.genres?.map { it.name }?.let {
                     CustomDetails(
-                        title = movieDetail.data?.title.toString(),
-                        posterPath = movieDetail.data?.posterPath.toString(),
+                        title = movieDetail.data.title,
+                        posterPath = movieDetail.data.posterPath,
                         genres = it,
-                        rating = movieDetail.data?.voteAverage.toString(),
+                        rating = movieDetail.data.voteAverage.toString(),
                         dateLabel = "Releate Date",
-                        dateData = movieDetail.data?.releaseDate.toString(),
-                        tagline = movieDetail.data?.tagline,
-                        overview = movieDetail.data?.overview
+                        dateData = movieDetail.data.releaseDate,
+                        tagline = movieDetail.data.tagline,
+                        overview = movieDetail.data.overview
                     )
                 }
             }
