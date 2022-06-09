@@ -1,7 +1,7 @@
 package com.ajgroup.themoviedbnew.repository
 
 import com.ajgroup.themoviedbnew.data.api.ApiService
-//
+//test
 //private val favoriteDao: FavoriteDao
 class DetailRepository(private val apiService: ApiService) {
     suspend fun getDetailMovie(movieId: Int) = apiService.getDetailMovie(movieId)
