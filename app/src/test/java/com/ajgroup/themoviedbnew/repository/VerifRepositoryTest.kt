@@ -10,8 +10,6 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-import org.junit.Assert.*
-
 class VerifRepositoryTest {
     private lateinit var userDao: UserDao
     private lateinit var userDataStoreManager: UserDataStoreManager

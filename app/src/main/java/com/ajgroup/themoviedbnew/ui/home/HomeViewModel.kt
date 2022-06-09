@@ -32,9 +32,9 @@ class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
             }
         }
     }
-    val discoveryMovies: LiveData<MoviesResponse> = _discoveryMovies
+//    val discoveryMovies: LiveData<MoviesResponse> = _discoveryMovies
 
-    fun getDiscoveryMovies() {
+    private fun getDiscoveryMovies() {
         isLoadingDiscovery.postValue(true)
         repository.getDiscoverMovies().enqueue(object : Callback<MoviesResponse> {
             override fun onResponse(
@@ -56,5 +56,5 @@ class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
         })
     }
 
-    val namaPreference = repository.getNama()
+//    val namaPreference = repository.getNama()
 }
