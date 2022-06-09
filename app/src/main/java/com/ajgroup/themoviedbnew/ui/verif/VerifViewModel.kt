@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.ajgroup.themoviedbnew.data.local.model.User
 import com.ajgroup.themoviedbnew.repository.VerifRepository
 import kotlinx.coroutines.launch
-
+//test
 class VerifViewModel(
     private val repository: VerifRepository
 ) : ViewModel() {
